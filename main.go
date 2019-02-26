@@ -5,11 +5,15 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func main() {
 
-	http.HandleFunc("/payload", ListenToGit)
+	r := mux.NewRouter()
+
+	r.HandleFunc("/payload", ListenToGit).Methods("POST")
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }
 
