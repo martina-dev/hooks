@@ -15,8 +15,8 @@ func main() {
 
 	r.HandleFunc("/payload", ListenToGit).Methods("POST")
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello World")).Methods("GET")
-	})
+		w.Write([]byte("Hello World"))
+	}).Methods("GET")
 	log.Fatal(http.ListenAndServe(":8000", r))
 }
 
