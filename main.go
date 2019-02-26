@@ -14,6 +14,9 @@ func main() {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/payload", ListenToGit).Methods("POST")
+	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([[]byte("Hello World"))
+	})
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }
 
